@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: ParkingPro
+  datasource:
+    password: mega_pass
+    username: parking
+    url: jdbc:postgresql://localhost:5432/parking_pro
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update

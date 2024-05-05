@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  main_back:
+    image: mainback:0.0.1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - main_db
+    environment:
+      - SERVER_PORT= 8080
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://main_db/parking_pro
+  main_db:
+    image: postgres:14.7-alpine
+    environment:
+      POSTGRES_USER: parking
+      POSTGRES_PASSWORD: mega_pass
+      POSTGRES_DB: parking_pro
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+volumes:
+  db-data:
