@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Collection;
+import java.util.Set;
 
 @Data
 @Entity
@@ -19,12 +20,12 @@ public class User {
     @Column(nullable = false, length = 80)
     private String password;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_roles",
-            joinColumns = @JoinColumn(name="user_id"),
+            joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
 
     )
-    private Collection<Role> roles;
+    private Set<Role> roles;
 }
