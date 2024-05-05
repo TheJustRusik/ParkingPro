@@ -65,4 +65,4 @@ insert into roles values
                       (1, 'User'),
                       (2, 'Parking owner'),
                       (3, 'Moderator'),
-                      (4, 'Admin')
+                      (4, 'Admin');
