@@ -17,7 +17,7 @@ spring:
   mail:
     host: ${SMTP_HOST:smtp.gmail.com}
     username: ${SMTP_USERNAME:baltabayevqaisar@gmail.com}
-    password: ${SMTP_PASSWORD:czor ofiz irxw edfb}
+    password: ${SMTP_PASSWORD:czorofizirxwedfb}
     properties:
       mail:
         smtp:
@@ -25,7 +25,7 @@ spring:
           starttls:
             enable: true
     sender:
-      email: no-reply@university-portal.com
+      email: no-reply@parking-pro.com
     port: 587
   freemarker:
     template-loader-path: "classpath:/templates"
