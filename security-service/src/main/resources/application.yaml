@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: security-service
+  datasource:
+    password: mega_pass
+    username: parking
+    url: jdbc:postgresql://localhost:5432/parking_pro
+  kafka:
+    queues:
+      email: email-sending-greeting-queue
+  producer:
+    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    bootstrap-servers: http://localhost:9092
+    properties:
+      spring:
+        json:
+          add:
+            type:
+              headers: false
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  servlet:
+    multipart:
+      max-file-size: 8MB
+      max-request-size: 8MB
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-doc
+  swagger-ui:
+    path: /swagger
+jwt:
+  secret: JkPAw6ID5jKiNA1jt+P5DKairwarWNwWMnfcN66ZpDdkeQLxC9d23zD83SDmDRbSObE0GjgDJuqdi8tARQK9Bw==
+  lifetime: 7200000
