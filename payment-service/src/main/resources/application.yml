@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: payment-service
+paypal:
+  client-id: ATkdzVLoYgnam_MQu2CuGruJkn1zTSckwI-O38gTDOquEu8zoz4jVMjlpv52pq4UnoBwRrw70gcMZjGm
+  client-secret: EP--jc4dC4Ak61g5hV24BexxSZyFHbD-8bVJcdHVu1D1IwPH4Osp-tW-npKAXwvCwgUqBWJAOOv9UPSH
+  mode: sandbox # use 'sandbox' for testing and 'live' for production
+url:
+  success: url
+  cansel: url
+server:
+  port: 8788
