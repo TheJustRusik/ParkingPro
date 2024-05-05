@@ -1,2 +1,2 @@
 rootProject.name = 'ParkingPro'
-include 'payment-service', 'api-gateway'
+include 'payment-service', 'api-gateway', 'notification-service'
