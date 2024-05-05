@@ -1,13 +1,12 @@
-package org.kenuki.parkingpro;
+package we.hack.apigateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ParkingProApplication {
+public class ApiGatewayApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ParkingProApplication.class, args);
+        SpringApplication.run(ApiGatewayApplication.class, args);
     }
-
 }

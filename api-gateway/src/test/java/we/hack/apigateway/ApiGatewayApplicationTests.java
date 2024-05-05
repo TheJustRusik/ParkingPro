@@ -1,10 +1,10 @@
-package org.kenuki.parkingpro;
+package we.hack.apigateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ParkingProApplicationTests {
+class ApiGatewayApplicationTests {
 
     @Test
     void contextLoads() {
