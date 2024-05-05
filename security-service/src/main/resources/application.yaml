@@ -29,3 +29,5 @@ springdoc:
 jwt:
   secret: JkPAw6ID5jKiNA1jt+P5DKairwarWNwWMnfcN66ZpDdkeQLxC9d23zD83SDmDRbSObE0GjgDJuqdi8tARQK9Bw==
   lifetime: 7200000
+server:
+  port: 8786
