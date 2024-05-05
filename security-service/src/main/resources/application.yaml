@@ -12,12 +12,6 @@ spring:
     key-serializer: org.apache.kafka.common.serialization.StringSerializer
     value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     bootstrap-servers: http://localhost:9092
-    properties:
-      spring:
-        json:
-          add:
-            type:
-              headers: false
   jpa:
     show-sql: true
     hibernate:
