@@ -9,3 +9,16 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+  servlet:
+    multipart:
+      max-file-size: 8MB
+      max-request-size: 8MB
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-doc
+  swagger-ui:
+    path: /swagger
+token:
+  secret: JkPAw6ID5jKiNA1jt+P5DKairwarWNwWMnfcN66ZpDdkeQLxC9d23zD83SDmDRbSObE0GjgDJuqdi8tARQK9Bw==
+  lifetime: 7200000

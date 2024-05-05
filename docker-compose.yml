@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   main_back:
-    image: mainback:0.0.1
+    image: mainback:latest
     build:
       context: .
       dockerfile: Dockerfile
