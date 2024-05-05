@@ -7,17 +7,16 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 import we.hack.paymentservice.service.PaypalService;
 
 /**
  * Controller for handling PayPal payments.
  */
-@Controller
 @Slf4j
+@RestController
+@RequestMapping("/api/v1/payment/")
 @RequiredArgsConstructor
 public class PaypalController {
 
@@ -28,7 +27,7 @@ public class PaypalController {
     @Value("${url.success}")
     private String successURL;
 
-    @PostMapping("/payment/create")
+    @PostMapping("/create")
     public RedirectView createPayment(
             @RequestParam("amount") String amount
     ) {
@@ -52,10 +51,10 @@ public class PaypalController {
             log.error("Error ocured: ", e);
         }
 
-        return new RedirectView("/payment/error");
+        return new RedirectView("/payment/error"); //todo: прописать url для перенаправления при ошибке
     }
 
-    @GetMapping("/payment/success")
+    @GetMapping("/success")
     public String paymentSuccess(
             @RequestParam("paymentId") String paymentId,
             @RequestParam("PayerID") String payerId
