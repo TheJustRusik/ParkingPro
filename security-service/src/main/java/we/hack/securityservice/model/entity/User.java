@@ -10,6 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -27,14 +28,14 @@ public class User implements UserDetails {
     private String username;
     private String email;
     private String password;
-    @OneToMany(mappedBy = "user")
-    private Set<Role> role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return role.stream()
-                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName()))
-                .collect(Collectors.toList());
+        var l = List.of(new SimpleGrantedAuthority("ROLE_".concat(role.name())));
+        System.out.println(l.get(0).getAuthority());
+        return l;
     }
 
     @Override

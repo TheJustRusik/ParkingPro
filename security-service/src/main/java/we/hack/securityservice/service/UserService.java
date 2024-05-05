@@ -11,7 +11,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import we.hack.securityservice.exception.InvalidCredentialsException;
 import we.hack.securityservice.exception.UserNotFoundException;
-import we.hack.securityservice.model.dto.*;
+import we.hack.securityservice.model.dto.AuthRequest;
+import we.hack.securityservice.model.dto.EmailMessageDto;
+import we.hack.securityservice.model.dto.TokenResponse;
+import we.hack.securityservice.model.dto.UserRequest;
+import we.hack.securityservice.model.entity.Role;
 import we.hack.securityservice.model.entity.User;
 import we.hack.securityservice.repository.UserRepository;
 import we.hack.securityservice.utils.JwtTokenUtils;
@@ -27,10 +31,10 @@ public class UserService {
     private final CustomUserDetailsService userDetailsService;
     private final JwtTokenUtils jwtTokenUtils;
     private final PasswordEncoder passwordEncoder;
-    private final KafkaTemplate<String, Object> kafkaTemplate;
+    private final KafkaTemplate<String, EmailMessageDto> kafkaTemplate;
 
-    @Value("${spring.kafka.queues.email}")
-    private String emailSendingQueue;
+//    @Value("${spring.kafka.queues.email}")
+//    private String emailSendingQueue;
 
     public TokenResponse register(UserRequest userRequest) {
 
@@ -38,6 +42,7 @@ public class UserService {
                 .username(userRequest.getUsername())
                 .email(userRequest.getEmail())
                 .password(userRequest.getPassword())
+                .role(Role.USER)
                 .build();
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -46,7 +51,7 @@ public class UserService {
         UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUsername());
         String token = jwtTokenUtils.generateToken(userDetails);
 
-        sendGreetingEmail(userRequest);
+//        sendGreetingEmail(userRequest);
         return new TokenResponse(token);
     }
 
@@ -71,10 +76,10 @@ public class UserService {
         return new TokenResponse(token);
     }
 
-    private void sendGreetingEmail(UserRequest userRequest) {
-        kafkaTemplate.send(emailSendingQueue, new EmailMessageDto(
-                userRequest.getEmail(), "Hello, " + userRequest.getUsername() + "! Welcome to our service!"));
-    }
+//    private void sendGreetingEmail(UserRequest userRequest) {
+//        kafkaTemplate.send(emailSendingQueue, new EmailMessageDto(
+//                userRequest.getEmail(), "Hello, " + userRequest.getUsername() + "! Welcome to our service!"));
+//    }
 
     public User findByUsername(String username) {
         return userRepository.findByUsername(username)
